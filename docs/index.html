@@ -1,0 +1,2011 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>WooCommerce REST API Documentation - WP REST API v3</title>
+
+    <link rel="icon" href="images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="images/favicon-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="images/favicon-180x180.png" />
+    <meta name="msapplication-TileImage" content="images/favicon-270x270.png" />
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;,&quot;php&quot;,&quot;python&quot;,&quot;ruby&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <a href="#" class="logo">
+        <img src="images/logo.png" alt="Logo" />
+      </a>
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">cURL</a>
+              <a href="#" data-language-name="javascript">Node.js</a>
+              <a href="#" data-language-name="php">PHP</a>
+              <a href="#" data-language-name="python">Python</a>
+              <a href="#" data-language-name="ruby">Ruby</a>
+        </div>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#requirements" class="toc-h2 toc-link" data-title="Requirements">Requirements</a>
+                  </li>
+                  <li>
+                    <a href="#request-response-format" class="toc-h2 toc-link" data-title="Request/Response Format">Request/Response Format</a>
+                  </li>
+                  <li>
+                    <a href="#errors" class="toc-h2 toc-link" data-title="Errors">Errors</a>
+                  </li>
+                  <li>
+                    <a href="#parameters" class="toc-h2 toc-link" data-title="Parameters">Parameters</a>
+                  </li>
+                  <li>
+                    <a href="#pagination" class="toc-h2 toc-link" data-title="Pagination">Pagination</a>
+                  </li>
+                  <li>
+                    <a href="#libraries-and-tools" class="toc-h2 toc-link" data-title="Libraries and Tools">Libraries and Tools</a>
+                  </li>
+                  <li>
+                    <a href="#learn-more" class="toc-h2 toc-link" data-title="Learn more">Learn more</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#rest-api-keys" class="toc-h2 toc-link" data-title="REST API keys">REST API keys</a>
+                  </li>
+                  <li>
+                    <a href="#authentication-over-https" class="toc-h2 toc-link" data-title="Authentication over HTTPS">Authentication over HTTPS</a>
+                  </li>
+                  <li>
+                    <a href="#authentication-over-http" class="toc-h2 toc-link" data-title="Authentication over HTTP">Authentication over HTTP</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#index" class="toc-h1 toc-link" data-title="Index">Index</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-request" class="toc-h2 toc-link" data-title="HTTP request">HTTP request</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#clients" class="toc-h1 toc-link" data-title="Clients">Clients</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#client-properties" class="toc-h2 toc-link" data-title="Client properties">Client properties</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-an-client" class="toc-h2 toc-link" data-title="Retrieve an client">Retrieve an client</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-clients" class="toc-h2 toc-link" data-title="List all clients">List all clients</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#billing" class="toc-h1 toc-link" data-title="Billing">Billing</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#billing-properties" class="toc-h2 toc-link" data-title="Billing properties">Billing properties</a>
+                  </li>
+                  <li>
+                    <a href="#retrieve-an-billing" class="toc-h2 toc-link" data-title="Retrieve an billing">Retrieve an billing</a>
+                  </li>
+                  <li>
+                    <a href="#list-all-billing" class="toc-h2 toc-link" data-title="List all billing">List all billing</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href="https://github.com/incdustry/karcher-rest-api-docs/">Contributing to Karcher REST API Docs</a></li>
+            <li><a href="https://woocommerce.github.io/woocommerce-rest-api-docs/">WooCommerce REST API Docs</a></li>
+            <li><a href="https://github.com/tripit/slate">Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>WooCommerce (WC) 2.6+ is fully integrated with the WordPress <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a> API. This allows WC data to be created, read, updated, and deleted using requests in JSON format and using WordPress REST API Authentication methods and standard HTTP verbs which are understood by most HTTP clients.</p>
+
+<p>The current WP REST API integration version is <code>karcher</code> which takes a first-order position in endpoints. </p>
+
+<p>The following table shows API versions present in each major version of WooCommerce:</p>
+
+<table><thead>
+<tr>
+<th>API Version</th>
+<th>WC Version</th>
+<th>WP Version</th>
+<th>Documentation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>karcher</code></td>
+<td>3.5.x or later</td>
+<td>4.4 or later</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>v3</code></td>
+<td>3.5.x or later</td>
+<td>4.4 or later</td>
+<td><a href="https://woocommerce.github.io/woocommerce-rest-api-docs/">v3 docs</a></td>
+</tr>
+<tr>
+<td><code>v2</code></td>
+<td>3.0.x or later</td>
+<td>4.4 or later</td>
+<td><a href="https://woocommerce.github.io/woocommerce-rest-api-docs/wp-api-v2.html">v2 docs</a></td>
+</tr>
+<tr>
+<td><code>v1</code></td>
+<td>2.6.x or later</td>
+<td>4.4 or later</td>
+<td><a href="https://woocommerce.github.io/woocommerce-rest-api-docs/wp-api-v1.html">v1 docs</a></td>
+</tr>
+</tbody></table>
+
+<p>Prior to 2.6, WooCommerce had a REST API separate from WordPress which is now known as the legacy API. You can find the documentation for the legacy API separately.</p>
+
+<table><thead>
+<tr>
+<th>API Version</th>
+<th>WC Version</th>
+<th>WP Version</th>
+<th>Documentation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Legacy v3</code></td>
+<td>2.4.x or later</td>
+<td>4.1 or later</td>
+<td><a href="https://woocommerce.github.io/woocommerce-rest-api-docs/v3.html">Legacy v3 docs</a></td>
+</tr>
+<tr>
+<td><code>Legacy v2</code></td>
+<td>2.2.x or later</td>
+<td>4.1 or later</td>
+<td><a href="https://woocommerce.github.io/woocommerce-rest-api-docs/v2.html">Legacy v2 docs</a></td>
+</tr>
+<tr>
+<td><code>Legacy v1</code></td>
+<td>2.1.x or later</td>
+<td>4.1 or later</td>
+<td><a href="https://woocommerce.github.io/woocommerce-rest-api-docs/v1.html">Legacy v1 docs</a></td>
+</tr>
+</tbody></table>
+<h2 id='requirements'>Requirements</h2>
+<p>To use the latest version of the REST API you must be using:</p>
+
+<ul>
+<li>WooCommerce 3.5+.</li>
+<li>WordPress 4.4+.</li>
+<li>Pretty permalinks in <code>Settings &gt; Permalinks</code> so that the custom endpoints are supported. <strong>Default permalinks will not work.</strong></li>
+<li>You may access the API over either HTTP or HTTPS, but <em>HTTPS is recommended where possible</em>.</li>
+</ul>
+
+<p>If you use ModSecurity and see <code>501 Method Not Implemented</code> errors, see <a href="https://github.com/woocommerce/woocommerce/issues/9838">this issue</a> for details.</p>
+
+<aside class="notice">
+    Please note that you are <strong>not</strong> required to install the <a href="https://wordpress.org/plugins/rest-api/" target="_blank">WP REST API (WP API)</a> plugin.
+</aside>
+<h2 id='request-response-format'>Request/Response Format</h2>
+<p>The default response format is JSON. Requests with a message-body use plain JSON to set or update resource attributes. Successful requests will return a <code>200 OK</code> HTTP status.</p>
+
+<p>Some general information about responses:</p>
+
+<ul>
+<li>Dates are returned in ISO8601 format: <code>YYYY-MM-DDTHH:MM:SS</code></li>
+<li>Resource IDs are returned as integers.</li>
+<li>Any decimal monetary amount, such as prices or totals, will be returned as strings with two decimal places.</li>
+<li>Other amounts, such as item counts, are returned as integers.</li>
+<li>Blank fields are generally included as <code>null</code> or emtpy string instead of being omitted.</li>
+</ul>
+<h3 id='jsonp-support'>JSONP Support</h3>
+<p>The WP REST API supports JSONP by default. JSONP responses use the <code>application/javascript</code> content-type. You can specify the callback using the <code>?_jsonp</code> parameter for <code>GET</code> requests to have the response wrapped in a JSON function:</p>
+
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/wp-json/wc/karcher?_jsonp=callback</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl https://example.com/wp-json/wc/karcher/products/tags/34?_jsonp<span class="o">=</span>tagDetails <span class="se">\</span>
+    -u consumer_key:consumer_secret
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">WooCommerce</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"products/tags/34?_jsonp=tagDetails"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span> <span class="nb">print_r</span><span class="p">(</span><span class="nv">$woocommerce</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'products/tags/34'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'_jsonp'</span> <span class="o">=&gt;</span> <span class="s1">'tagDetails'</span><span class="p">]));</span> <span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="k">print</span><span class="p">(</span><span class="n">wcapi</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"products/tags/34?_jsonp=tagDetails"</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="n">woocommerce</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"products/tags/34"</span><span class="p">,</span> <span class="ss">_jsonp: </span><span class="s2">"tagDetails"</span><span class="p">).</span><span class="nf">parsed_response</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>/**/tagDetails({"id":34,"name":"Leather Shoes","slug":"leather-shoes","description":"","count":0,"_links":{"self":[{"href":"https://example.com/wp-json/wc/karcher/products/tags/34"}],"collection":[{"href":"https://example.com/wp-json/wc/karcher/products/tags"}]}})%
+</code></pre><h2 id='errors'>Errors</h2>
+<p>Occasionally you might encounter errors when accessing the REST API. There are four possible types:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Error Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>400 Bad Request</code></td>
+<td>Invalid request, e.g. using an unsupported HTTP method</td>
+</tr>
+<tr>
+<td><code>401 Unauthorized</code></td>
+<td>Authentication or permission error, e.g. incorrect API keys</td>
+</tr>
+<tr>
+<td><code>404 Not Found</code></td>
+<td>Requests to resources that don&#39;t exist or are missing</td>
+</tr>
+<tr>
+<td><code>500 Internal Server Error</code></td>
+<td>Server error</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>WP REST API error example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rest_no_route"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No route was found matching the URL and request method"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>WooCommerce REST API error example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"woocommerce_rest_term_invalid"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource doesn't exist."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Errors return both an appropriate HTTP status code and response object which contains a <code>code</code>, <code>message</code> and <code>data</code> attribute.</p>
+<h2 id='parameters'>Parameters</h2>
+<p>Almost all endpoints accept optional parameters which can be passed as a HTTP query string parameter, e.g. <code>GET /clients?seen=completed</code>. All parameters are documented along each endpoint.</p>
+<h2 id='pagination'>Pagination</h2>
+<p>Requests that return multiple items will be paginated to 10 items by default. This default can be changed by the site administrator by changing the <code>posts_per_page</code> option. Alternatively the items per page can be specified with the <code>?per_page</code> parameter:</p>
+
+<p><code>GET /clients?per_page=15</code></p>
+
+<p>You can specify further pages with the <code>?page</code> parameter:</p>
+
+<p><code>GET /clients?page=2</code></p>
+
+<p>You may also specify the offset from the first resource using the <code>?offset</code> parameter:</p>
+
+<p><code>GET /clients?offset=5</code></p>
+
+<p>Page number is 1-based and omitting the <code>?page</code> parameter will return the first page.</p>
+
+<p>The total number of resources and pages are always included in the <code>X-WP-Total</code> and <code>X-WP-TotalPages</code> HTTP headers.</p>
+<h3 id='link-header'>Link Header</h3>
+<p>Pagination info is included in the <a href="http://tools.ietf.org/html/rfc5988">Link Header</a>. It&#39;s recommended that you follow these values instead of building your own URLs where possible.</p>
+<pre class="highlight plaintext"><code>Link: &lt;https://www.example.com/wp-json/wc/karcher/products?page=2&gt;; rel="next",
+&lt;https://www.example.com/wp-json/wc/karcher/products?page=3&gt;; rel="last"`
+</code></pre>
+<p>The possible <code>rel</code> values are:</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>next</code></td>
+<td>Shows the URL of the immediate next page of results.</td>
+</tr>
+<tr>
+<td><code>last</code></td>
+<td>Shows the URL of the last page of results.</td>
+</tr>
+<tr>
+<td><code>first</code></td>
+<td>Shows the URL of the first page of results.</td>
+</tr>
+<tr>
+<td><code>prev</code></td>
+<td>Shows the URL of the immediate previous page of results.</td>
+</tr>
+</tbody></table>
+<h2 id='libraries-and-tools'>Libraries and Tools</h2><h3 id='official-libraries'>Official libraries</h3>
+<ul>
+<li><a href="https://www.npmjs.com/package/@woocommerce/woocommerce-rest-api">JavaScript</a> Library</li>
+<li><a href="https://packagist.org/packages/automattic/woocommerce">PHP</a> Library</li>
+<li><a href="https://pypi.python.org/pypi/WooCommerce">Python</a> Library</li>
+<li><a href="https://rubygems.org/gems/woocommerce_api">Ruby</a> Library</li>
+</ul>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">// Install:</span>
+<span class="c1">// npm install --save @woocommerce/woocommerce-rest-api</span>
+
+<span class="c1">// Setup:</span>
+<span class="kr">const</span> <span class="nx">WooCommerceRestApi</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"@woocommerce/woocommerce-rest-api"</span><span class="p">).</span><span class="k">default</span><span class="p">;</span>
+<span class="c1">// import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api"; // Supports ESM</span>
+
+<span class="kr">const</span> <span class="nx">WooCommerce</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WooCommerceRestApi</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'http://example.com'</span><span class="p">,</span> <span class="c1">// Your store URL</span>
+  <span class="na">consumerKey</span><span class="p">:</span> <span class="s1">'consumer_key'</span><span class="p">,</span> <span class="c1">// Your consumer key</span>
+  <span class="na">consumerSecret</span><span class="p">:</span> <span class="s1">'consumer_secret'</span><span class="p">,</span> <span class="c1">// Your consumer secret</span>
+  <span class="na">version</span><span class="p">:</span> <span class="s1">'wc/karcher'</span> <span class="c1">// WooCommerce WP REST API version</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="c1">// Install:
+// composer require automattic/woocommerce
+</span>
+<span class="c1">// Setup:
+</span><span class="k">require</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Automattic\WooCommerce\Client</span><span class="p">;</span>
+
+<span class="nv">$woocommerce</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span>
+    <span class="s1">'http://example.com'</span><span class="p">,</span> <span class="c1">// Your store URL
+</span>    <span class="s1">'consumer_key'</span><span class="p">,</span> <span class="c1">// Your consumer key
+</span>    <span class="s1">'consumer_secret'</span><span class="p">,</span> <span class="c1">// Your consumer secret
+</span>    <span class="p">[</span>
+        <span class="s1">'wp_api'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// Enable the WP REST API integration
+</span>        <span class="s1">'version'</span> <span class="o">=&gt;</span> <span class="s1">'wc/karcher'</span> <span class="c1">// WooCommerce WP REST API version
+</span>    <span class="p">]</span>
+<span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="c"># Install:</span>
+<span class="c"># pip install woocommerce</span>
+
+<span class="c"># Setup:</span>
+<span class="kn">from</span> <span class="nn">woocommerce</span> <span class="kn">import</span> <span class="n">API</span>
+
+<span class="n">wcapi</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="s">"http://example.com"</span><span class="p">,</span> <span class="c"># Your store URL</span>
+    <span class="n">consumer_key</span><span class="o">=</span><span class="s">"consumer_key"</span><span class="p">,</span> <span class="c"># Your consumer key</span>
+    <span class="n">consumer_secret</span><span class="o">=</span><span class="s">"consumer_secret"</span><span class="p">,</span> <span class="c"># Your consumer secret</span>
+    <span class="n">wp_api</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="c"># Enable the WP REST API integration</span>
+    <span class="n">version</span><span class="o">=</span><span class="s">"wc/karcher"</span> <span class="c"># WooCommerce WP REST API version</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1"># Install:</span>
+<span class="c1"># gem install woocommerce_api</span>
+
+<span class="c1"># Setup:</span>
+<span class="nb">require</span> <span class="s2">"woocommerce_api"</span>
+
+<span class="n">woocommerce</span> <span class="o">=</span> <span class="no">WooCommerce</span><span class="o">::</span><span class="no">API</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+  <span class="s2">"https://example.com"</span><span class="p">,</span> <span class="c1"># Your store URL</span>
+  <span class="s2">"consumer_key"</span><span class="p">,</span> <span class="c1"># Your consumer key</span>
+  <span class="s2">"consumer_secret"</span><span class="p">,</span> <span class="c1"># Your consumer secret</span>
+  <span class="p">{</span>
+    <span class="ss">wp_api: </span><span class="kp">true</span><span class="p">,</span> <span class="c1"># Enable the WP REST API integration</span>
+    <span class="ss">version: </span><span class="s2">"wc/karcher"</span> <span class="c1"># WooCommerce WP REST API version</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre>
+<aside class="notice">
+    Use the tabs in the top-right corner of this page to see how to install and use each library.
+</aside>
+<h3 id='third-party-libraries'>Third party libraries</h3>
+<ul>
+<li><a href="https://github.com/icoderman/wc-api-java">Java</a> Library</li>
+<li><a href="https://github.com/XiaoFaye/WooCommerce.NET">.NET</a> Library</li>
+<li><a href="https://github.com/gilokimu/WooDroid">Android</a> Library</li>
+</ul>
+
+<aside class="notice">
+    Note that we don't offer support for third party libraries, so if you have questions about how use any of this libraries you should contact the respective authors.
+</aside>
+<h3 id='tools'>Tools</h3>
+<p>Some useful tools you can use to access the API include:</p>
+
+<ul>
+<li><a href="https://insomnia.rest">Insomnia</a> - Cross-platform GraphQL and REST client, available for Mac, Windows, and Linux.</li>
+<li><a href="https://www.getpostman.com/">Postman</a> - Cross-platform REST client, available for Mac, Windows, and Linux.</li>
+<li><a href="https://requestbin.com">RequestBin</a> - Allows you test webhooks.</li>
+<li><a href="https://hookbin.com/">Hookbin</a> - Another tool to test webhooks.</li>
+</ul>
+<h2 id='learn-more'>Learn more</h2>
+<p>Learn more about the REST API checking the <a href="https://developer.wordpress.org/rest-api/">official WordPress REST API documentation</a>.</p>
+<h1 id='authentication'>Authentication</h1>
+<p>WooCommerce includes two ways to authenticate with the WP REST API. It is also possible to authenticate using any <a href="http://v3.wp-api.org/guide/authentication/">WP REST API authentication</a> plugin or method.</p>
+<h2 id='rest-api-keys'>REST API keys</h2>
+<p>Pre-generated keys can be used to authenticate use of the REST API endpoints. New keys can be generated either through the WordPress admin interface or they can be auto-generated through an endpoint.</p>
+<h3 id='generating-api-keys-in-the-wordpress-admin-interface'>Generating API keys in the WordPress admin interface</h3>
+<p>To create or manage keys for a specific WordPress user, go to WooCommerce &gt; Settings &gt; API &gt; Keys/Apps.</p>
+
+<p><img src="images/woocommerce-api-keys-settings.png" alt="WooCommerce REST API keys settings" /></p>
+
+<p>Click the &quot;Add Key&quot; button. In the next screen, add a description and select the WordPress user you would like to generate the key for. Use of the REST API with the generated keys will conform to that user&#39;s WordPress roles and capabilities.</p>
+
+<p>Choose the level of access for this REST API key, which can be <em>Read</em> access, <em>Write</em> access or <em>Read/Write</em> access. Then click the &quot;Generate API Key&quot; button and WooCommerce will generate REST API keys for the selected user.</p>
+
+<p><img src="images/woocommerce-creating-api-keys.png" alt="Creating a new REST API key" /></p>
+
+<p>Now that keys have been generated, you should see two new keys, a QRCode, and a Revoke API Key button. These two keys are your Consumer Key and Consumer Secret.</p>
+
+<p><img src="images/woocommerce-api-key-generated.png" alt="Generated REST API key" /></p>
+
+<p>If the WordPress user associated with an API key is deleted, the API key will cease to function. API keys are not transferred to other users.</p>
+<h3 id='auto-generating-api-keys-using-our-application-authentication-endpoint'>Auto generating API keys using our Application Authentication Endpoint</h3>
+<p>This endpoint can be used by any APP to <em>allow users to generate API keys</em> for your APP. This makes integration with WooCommerce API easier because the user only needs to grant access to your APP via a URL. After being redirected back to your APP, the API keys will be sent back in a separate POST request.</p>
+
+<p>The following image illustrates how this works:</p>
+
+<p><img src="images/woocommerce-auth-endpoint-flow.png" alt="Authentication Endpoint flow" /></p>
+
+<aside class="warning">
+    This endpoint works exclusively for users to generate API keys and facilitate integration between the WooCommerce REST API and an application. In no way is this endpoint intended to be used as login method for customers.
+</aside>
+<h4 id='url-parameters'>URL parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>app_name</code></td>
+<td>string</td>
+<td>Your APP name <i class="label label-info">mandatory</i></td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td>string</td>
+<td>Level of access. Available: <code>read</code>, <code>write</code> and <code>read_write</code> <i class="label label-info">mandatory</i></td>
+</tr>
+<tr>
+<td><code>user_id</code></td>
+<td>string</td>
+<td>User ID in your APP. For your internal reference, used when the user is redirected back to your APP. NOT THE USER ID IN WOOCOMMERCE <i class="label label-info">mandatory</i></td>
+</tr>
+<tr>
+<td><code>return_url</code></td>
+<td>string</td>
+<td>URL the user will be redirected to after authentication <i class="label label-info">mandatory</i></td>
+</tr>
+<tr>
+<td><code>callback_url</code></td>
+<td>string</td>
+<td>URL that will receive the generated API key. Note: this URL should be over <strong>HTTPS</strong> <i class="label label-info">mandatory</i></td>
+</tr>
+</tbody></table>
+<h4 id='creating-an-authentication-endpoint-url'>Creating an authentication endpoint URL</h4>
+<p>You must use the <code>/wc-auth/v1/authorize</code> endpoint and pass the above parameters as a query string.</p>
+
+<blockquote>
+<p>Example of how to build an authentication URL:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># Bash example</span>
+<span class="nv">STORE_URL</span><span class="o">=</span><span class="s1">'http://example.com'</span>
+<span class="nv">ENDPOINT</span><span class="o">=</span><span class="s1">'/wc-auth/v1/authorize'</span>
+<span class="nv">PARAMS</span><span class="o">=</span><span class="s2">"app_name=My App Name&amp;scope=read_write&amp;user_id=123&amp;return_url=http://app.com/return-page&amp;callback_url=https://app.com/callback-endpoint"</span>
+<span class="nv">QUERY_STRING</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>perl -MURI::Escape -e <span class="s1">'print uri_escape($ARGV[0]);'</span> <span class="s2">"</span><span class="nv">$PARAMS</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<span class="nv">QUERY_STRING</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$QUERY_STRING</span> | sed -e <span class="s2">"s/%20/</span><span class="se">\+</span><span class="s2">/g"</span> -e <span class="s2">"s/%3D/</span><span class="se">\=</span><span class="s2">/g"</span> -e <span class="s2">"s/%26/</span><span class="se">\&amp;</span><span class="s2">/g"</span><span class="k">)</span>
+
+<span class="nb">echo</span> <span class="s2">"</span><span class="nv">$STORE_URL$ENDPOINT</span><span class="s2">?</span><span class="nv">$QUERY_STRING</span><span class="s2">"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">querystring</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'querystring'</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">store_url</span> <span class="o">=</span> <span class="s1">'http://example.com'</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">endpoint</span> <span class="o">=</span> <span class="s1">'/wc-auth/v1/authorize'</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">app_name</span><span class="p">:</span> <span class="s1">'My App Name'</span><span class="p">,</span>
+  <span class="na">scope</span><span class="p">:</span> <span class="s1">'read_write'</span><span class="p">,</span>
+  <span class="na">user_id</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+  <span class="na">return_url</span><span class="p">:</span> <span class="s1">'http://app.com/return-page'</span><span class="p">,</span>
+  <span class="na">callback_url</span><span class="p">:</span> <span class="s1">'https://app.com/callback-endpoint'</span>
+<span class="p">};</span>
+<span class="kr">const</span> <span class="nx">query_string</span> <span class="o">=</span> <span class="nx">querystring</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">params</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/%20/g</span><span class="p">,</span> <span class="s1">'+'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">store_url</span> <span class="o">+</span> <span class="nx">endpoint</span> <span class="o">+</span> <span class="s1">'?'</span> <span class="o">+</span> <span class="nx">query_string</span><span class="p">);</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="nv">$store_url</span> <span class="o">=</span> <span class="s1">'http://example.com'</span><span class="p">;</span>
+<span class="nv">$endpoint</span> <span class="o">=</span> <span class="s1">'/wc-auth/v1/authorize'</span><span class="p">;</span>
+<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'app_name'</span> <span class="o">=&gt;</span> <span class="s1">'My App Name'</span><span class="p">,</span>
+    <span class="s1">'scope'</span> <span class="o">=&gt;</span> <span class="s1">'write'</span><span class="p">,</span>
+    <span class="s1">'user_id'</span> <span class="o">=&gt;</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="s1">'return_url'</span> <span class="o">=&gt;</span> <span class="s1">'http://app.com'</span><span class="p">,</span>
+    <span class="s1">'callback_url'</span> <span class="o">=&gt;</span> <span class="s1">'https://app.com'</span>
+<span class="p">];</span>
+<span class="nv">$query_string</span> <span class="o">=</span> <span class="nb">http_build_query</span><span class="p">(</span> <span class="nv">$params</span> <span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$store_url</span> <span class="o">.</span> <span class="nv">$endpoint</span> <span class="o">.</span> <span class="s1">'?'</span> <span class="o">.</span> <span class="nv">$query_string</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlencode</span>
+
+<span class="n">store_url</span> <span class="o">=</span> <span class="s">'http://example.com'</span>
+<span class="n">endpoint</span> <span class="o">=</span> <span class="s">'/wc-auth/v1/authorize'</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"app_name"</span><span class="p">:</span> <span class="s">"My App Name"</span><span class="p">,</span>
+    <span class="s">"scope"</span><span class="p">:</span> <span class="s">"read_write"</span><span class="p">,</span>
+    <span class="s">"user_id"</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+    <span class="s">"return_url"</span><span class="p">:</span> <span class="s">"http://app.com/return-page"</span><span class="p">,</span>
+    <span class="s">"callback_url"</span><span class="p">:</span> <span class="s">"https://app.com/callback-endpoint"</span>
+<span class="p">}</span>
+<span class="n">query_string</span> <span class="o">=</span> <span class="n">urlencode</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%</span><span class="s">s</span><span class="si">%</span><span class="s">s?</span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span> <span class="p">(</span><span class="n">store_url</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">query_string</span><span class="p">))</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+
+<span class="n">store_url</span> <span class="o">=</span> <span class="s1">'http://example.com'</span>
+<span class="n">endpoint</span> <span class="o">=</span> <span class="s1">'/wc-auth/v1/authorize'</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">app_name: </span><span class="s2">"My App Name"</span><span class="p">,</span>
+  <span class="ss">scope: </span><span class="s2">"read_write"</span><span class="p">,</span>
+  <span class="ss">user_id: </span><span class="mi">123</span><span class="p">,</span>
+  <span class="ss">return_url: </span><span class="s2">"http://app.com/return-page"</span><span class="p">,</span>
+  <span class="ss">callback_url: </span><span class="s2">"https://app.com/callback-endpoint"</span>
+<span class="p">}</span>
+<span class="n">query_string</span> <span class="o">=</span> <span class="no">URI</span><span class="p">.</span><span class="nf">encode_www_form</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="nb">puts</span> <span class="s2">"</span><span class="si">#{</span><span class="n">store_url</span><span class="si">}#{</span><span class="n">endpoint</span><span class="si">}</span><span class="s2">?</span><span class="si">#{</span><span class="n">query_string</span><span class="si">}</span><span class="s2">"</span>
+</code></pre>
+<blockquote>
+<p>Example of JSON posted with the API Keys</p>
+</blockquote>
+<pre class="highlight plaintext"><code>{
+    "key_id": 1,
+    "user_id": 123,
+    "consumer_key": "ck_xxxxxxxxxxxxxxxx",
+    "consumer_secret": "cs_xxxxxxxxxxxxxxxx",
+    "key_permissions": "read_write"
+}
+</code></pre>
+<p>Example of the screen that the user will see:</p>
+
+<p><img src="images/woocommerce-auth-endpoint-example.png" alt="Authentication Endpoint example" /></p>
+<h4 id='notes'>Notes</h4>
+<ul>
+<li>While redirecting the user using <code>return_url</code>, you are also sent <code>success</code> and <code>user_id</code> parameters as query strings.</li>
+<li><code>success</code> sends <code>0</code> if the user denied, or <code>1</code> if authenticated successfully.</li>
+<li>Use <code>user_id</code> to identify the user when redirected back to the (<code>return_url</code>) and also remember to save the API Keys when your <code>callback_url</code> is posted to after auth.</li>
+<li>The auth endpoint will send the API Keys in JSON format to the <code>callback_url</code>, so it&#39;s important to remember that some languages such as PHP will not display it inside the <code>$_POST</code> global variable, in PHP you can access it using <code>$HTTP_RAW_POST_DATA</code> (for old PHP versions) or <code>file_get_contents(&#39;php://input&#39;);</code>.</li>
+<li>The URL generated must have all query string values encoded.</li>
+</ul>
+<h2 id='authentication-over-https'>Authentication over HTTPS</h2>
+<p>You may use <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic Auth</a> by providing the REST API Consumer Key as the username and the REST API Consumer Secret as the password.</p>
+
+<blockquote>
+<p>HTTP Basic Auth example</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://www.example.com/wp-json/wc/karcher/clients <span class="se">\</span>
+    -u consumer_key:consumer_secret
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">WooCommerceRestApi</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"@woocommerce/woocommerce-rest-api"</span><span class="p">).</span><span class="k">default</span><span class="p">;</span>
+<span class="c1">// import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api"; // Supports ESM</span>
+
+<span class="kr">const</span> <span class="nx">WooCommerce</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WooCommerceRestApi</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://example.com'</span><span class="p">,</span>
+  <span class="na">consumerKey</span><span class="p">:</span> <span class="s1">'consumer_key'</span><span class="p">,</span>
+  <span class="na">consumerSecret</span><span class="p">:</span> <span class="s1">'consumer_secret'</span><span class="p">,</span>
+  <span class="na">version</span><span class="p">:</span> <span class="s1">'wc/karcher'</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Automattic\WooCommerce\Client</span><span class="p">;</span>
+
+<span class="nv">$woocommerce</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span>
+    <span class="s1">'https://example.com'</span><span class="p">,</span>
+    <span class="s1">'consumer_key'</span><span class="p">,</span>
+    <span class="s1">'consumer_secret'</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s1">'wp_api'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s1">'version'</span> <span class="o">=&gt;</span> <span class="s1">'wc/karcher'</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">woocommerce</span> <span class="kn">import</span> <span class="n">API</span>
+
+<span class="n">wcapi</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="s">"https://example.com"</span><span class="p">,</span>
+    <span class="n">consumer_key</span><span class="o">=</span><span class="s">"consumer_key"</span><span class="p">,</span>
+    <span class="n">consumer_secret</span><span class="o">=</span><span class="s">"consumer_secret"</span><span class="p">,</span>
+    <span class="n">wp_api</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s">"wc/karcher"</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"woocommerce_api"</span>
+
+<span class="n">woocommerce</span> <span class="o">=</span> <span class="no">WooCommerce</span><span class="o">::</span><span class="no">API</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+  <span class="s2">"https://example.com"</span><span class="p">,</span>
+  <span class="s2">"consumer_key"</span><span class="p">,</span>
+  <span class="s2">"consumer_secret"</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">wp_json: </span><span class="kp">true</span><span class="p">,</span>
+    <span class="ss">version: </span><span class="s2">"wc/karcher"</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre>
+<p>Occasionally some servers may not parse the Authorization header correctly (if you see a &quot;Consumer key is missing&quot; error when authenticating over SSL, you have a server issue). In this case, you may provide the consumer key/secret as query string parameters instead.</p>
+
+<blockquote>
+<p>Example for servers that not properly parse the Authorization header:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl https://www.example.com/wp-json/wc/karcher/clients?consumer_key<span class="o">=</span>123&amp;consumer_secret<span class="o">=</span>abc
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">WooCommerceRestApi</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"@woocommerce/woocommerce-rest-api"</span><span class="p">).</span><span class="k">default</span><span class="p">;</span>
+<span class="c1">// import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api"; // Supports ESM</span>
+
+<span class="kr">const</span> <span class="nx">WooCommerce</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">WooCommerceRestApi</span><span class="p">({</span>
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://example.com'</span><span class="p">,</span>
+  <span class="na">consumerKey</span><span class="p">:</span> <span class="s1">'consumer_key'</span><span class="p">,</span>
+  <span class="na">consumerSecret</span><span class="p">:</span> <span class="s1">'consumer_secret'</span><span class="p">,</span>
+  <span class="na">version</span><span class="p">:</span> <span class="s1">'wc/karcher'</span><span class="p">,</span>
+  <span class="na">queryStringAuth</span><span class="p">:</span> <span class="kc">true</span> <span class="c1">// Force Basic Authentication as query string true and using under HTTPS</span>
+<span class="p">});</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/autoload.php'</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Automattic\WooCommerce\Client</span><span class="p">;</span>
+
+<span class="nv">$woocommerce</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span>
+    <span class="s1">'https://example.com'</span><span class="p">,</span>
+    <span class="s1">'consumer_key'</span><span class="p">,</span>
+    <span class="s1">'consumer_secret'</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s1">'wp_api'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s1">'version'</span> <span class="o">=&gt;</span> <span class="s1">'wc/karcher'</span><span class="p">,</span>
+        <span class="s1">'query_string_auth'</span> <span class="o">=&gt;</span> <span class="kc">true</span> <span class="c1">// Force Basic Authentication as query string true and using under HTTPS
+</span>    <span class="p">]</span>
+<span class="p">);</span>
+<span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">woocommerce</span> <span class="kn">import</span> <span class="n">API</span>
+
+<span class="n">wcapi</span> <span class="o">=</span> <span class="n">API</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="s">"https://example.com"</span><span class="p">,</span>
+    <span class="n">consumer_key</span><span class="o">=</span><span class="s">"consumer_key"</span><span class="p">,</span>
+    <span class="n">consumer_secret</span><span class="o">=</span><span class="s">"consumer_secret"</span><span class="p">,</span>
+    <span class="n">wp_api</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s">"wc/karcher"</span><span class="p">,</span>
+    <span class="n">query_string_auth</span><span class="o">=</span><span class="bp">True</span> <span class="o">//</span> <span class="n">Force</span> <span class="n">Basic</span> <span class="n">Authentication</span> <span class="k">as</span> <span class="n">query</span> <span class="n">string</span> <span class="n">true</span> <span class="ow">and</span> <span class="n">using</span> <span class="n">under</span> <span class="n">HTTPS</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"woocommerce_api"</span>
+
+<span class="n">woocommerce</span> <span class="o">=</span> <span class="no">WooCommerce</span><span class="o">::</span><span class="no">API</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+  <span class="s2">"https://example.com"</span><span class="p">,</span>
+  <span class="s2">"consumer_key"</span><span class="p">,</span>
+  <span class="s2">"consumer_secret"</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="ss">wp_json: </span><span class="kp">true</span><span class="p">,</span>
+    <span class="ss">version: </span><span class="s2">"wc/karcher"</span><span class="p">,</span>
+    <span class="ss">query_string_auth: </span><span class="kp">true</span> <span class="sr">//</span> <span class="no">Force</span> <span class="no">Basic</span> <span class="no">Authentication</span> <span class="n">as</span> <span class="n">query</span> <span class="n">string</span> <span class="kp">true</span> <span class="n">and</span> <span class="n">using</span> <span class="n">under</span> <span class="no">HTTPS</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre><h2 id='authentication-over-http'>Authentication over HTTP</h2>
+<p>You must use <a href="http://tools.ietf.org/html/rfc5849">OAuth 1.0a &quot;one-legged&quot; authentication</a> to ensure REST API credentials cannot be intercepted by an attacker. Typically you will use any standard OAuth 1.0a library in the language of your choice to handle the authentication, or generate the necessary parameters by following the following instructions.</p>
+<h3 id='creating-a-signature'>Creating a signature</h3><h4 id='collect-the-request-method-and-url'>Collect the request method and URL</h4>
+<p>First you need to determine the HTTP method you will be using for the request, and the URL of the request.</p>
+
+<p>The <strong>HTTP method</strong> will be <code>GET</code> in our case.</p>
+
+<p>The <strong>Request URL</strong> will be the endpoint you are posting to, e.g. <code>http://www.example.com/wp-json/wc/karcher/clients</code>.</p>
+<h4 id='collect-parameters'>Collect parameters</h4>
+<p>Collect and normalize your parameters. This includes all <code>oauth_*</code> parameters except for the <code>oauth_signature</code> itself.</p>
+
+<p>These values need to be encoded into a single string which will be used later on. The process to build the string is very specific:</p>
+
+<ol>
+<li><a href="https://dev.twitter.com/oauth/overview/percent-encoding-parameters">Percent encode</a> every key and value that will be signed.</li>
+<li>Sort the list of parameters alphabetically by encoded key.</li>
+<li>For each key/value pair:
+
+<ul>
+<li>Append the encoded key to the output string.</li>
+<li>Append the <code>=</code> character to the output string.</li>
+<li>Append the encoded value to the output string.</li>
+<li>If there are more key/value pairs remaining, append a <code>&amp;</code> character to the output string.</li>
+</ul></li>
+</ol>
+
+<p>When percent encoding in PHP for example, you would use <code>rawurlencode()</code>.</p>
+
+<p>When sorting parameters in PHP for example, you would use <code>uksort( $params, &#39;strcmp&#39; )</code>.</p>
+
+<blockquote>
+<p>Parameters example:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>oauth_consumer_key=abc123&amp;oauth_signature_method=HMAC-SHA1
+</code></pre><h4 id='create-the-signature-base-string'>Create the signature base string</h4>
+<p>The above values collected so far must be joined to make a single string, from which the signature will be generated. This is called the signature base string in the OAuth specification.</p>
+
+<p>To encode the HTTP method, request URL, and parameter string into a single string:</p>
+
+<ol>
+<li>Set the output string equal to the uppercase <strong>HTTP Method</strong>.</li>
+<li>Append the <code>&amp;</code> character to the output string.</li>
+<li><a href="https://dev.twitter.com/oauth/overview/percent-encoding-parameters">Percent encode</a> the URL and append it to the output string.</li>
+<li>Append the <code>&amp;</code> character to the output string.</li>
+<li><a href="https://dev.twitter.com/oauth/overview/percent-encoding-parameters">Percent encode</a> the parameter string and append it to the output string.</li>
+</ol>
+
+<blockquote>
+<p>Example signature base string:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>GET&amp;http%3A%2F%2Fwww.example.com%2Fwp-json%2Fwc%2Fkarcher%2Fclients&amp;oauth_consumer_key%3Dabc123%26oauth_signature_method%3DHMAC-SHA1
+</code></pre><h4 id='generate-the-signature'>Generate the signature</h4>
+<p>Generate the signature using the <em>signature base string</em> and your consumer secret key with a <code>&amp;</code> character with the HMAC-SHA1 hashing algorithm.</p>
+
+<p>In PHP you can use the <a href="http://php.net/manual/en/function.hash-hmac.php">hash_hmac</a> function.</p>
+
+<p>HMAC-SHA1 or HMAC-SHA256 are the only accepted hash algorithms.</p>
+
+<p>If you are having trouble generating a correct signature, you&#39;ll want to review the string you are signing for encoding errors. The <a href="https://github.com/woocommerce/woocommerce/blob/master/includes/api/class-wc-rest-authentication.php#L141">authentication source</a> can also be helpful in understanding how to properly generate the signature.</p>
+<h3 id='oauth-tips'>OAuth tips</h3>
+<ul>
+<li>The OAuth parameters may be added as query string parameters or included in the Authorization header.</li>
+<li>Note there is no reliable cross-platform way to get the raw request headers in WordPress, so query string should be more reliable in some cases.</li>
+<li>The required parameters are: <code>oauth_consumer_key</code>, <code>oauth_timestamp</code>, <code>oauth_nonce</code>, <code>oauth_signature</code>, and <code>oauth_signature_method</code>. <code>oauth_version</code> is not required and should be omitted.</li>
+<li>The OAuth nonce can be any randomly generated 32 character (recommended) string that is unique to the consumer key.</li>
+<li>The OAuth timestamp should be the unix timestamp at the time of the request. The REST API will deny any requests that include a timestamp outside of a 15 minute window to prevent replay attacks.</li>
+<li>You must use the store URL provided by the index when forming the base string used for the signature, as this is what the server will use. (e.g. if the store URL includes a <code>www</code> sub-domain, you should use it for requests)</li>
+<li>Note that the request body is <em>not</em> signed as per the OAuth spec.</li>
+<li>If including parameters in your request, it saves a lot of trouble if you can order your items alphabetically.</li>
+<li>Authorization header is supported starting WooCommerce 3.0.</li>
+</ul>
+<h1 id='index'>Index</h1>
+<p>By default, the API provides information about all available endpoints on the site. Authentication is not required to access the API index.</p>
+<h3 id='http-request'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/wp-json/wc/karcher</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl https://example.com/wp-json/wc/karcher
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">WooCommerce</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span> <span class="nb">print_r</span><span class="p">(</span><span class="nv">$woocommerce</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">''</span><span class="p">));</span> <span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="k">print</span><span class="p">(</span><span class="n">wcapi</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">""</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="n">woocommerce</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">""</span><span class="p">).</span><span class="nf">parsed_response</span>
+</code></pre>
+<blockquote>
+<p>JSON response example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wc/karcher"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"routes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"/wc/karcher"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wc/karcher"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"GET"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"endpoints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"GET"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wc/karcher"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/wp-json/wc/karcher"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"/wc/karcher/clients"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wc/karcher"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"GET"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"endpoints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"GET"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"view"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"edit"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scope under which the request is made; determines fields present in response."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Current page of the collection."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maximum number of items to be returned in result set."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"search"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit results to those matching a string."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"after"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit response to resources published after a given ISO8601 compliant date."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"before"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit response to resources published before a given ISO8601 compliant date."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"exclude"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ensure result set excludes specific IDs."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"include"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit result set to specific ids."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offset the result set by a specific number of items."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"desc"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"asc"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"desc"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order sort attribute ascending or descending."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"orderby"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"date"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"include"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"slug"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sort collection by object attribute."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit result set to those of particular parent IDs."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"parent_exclude"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit result set to all items except those of a particular parent ID."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"any"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"any"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"on-hold"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cancelled"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"refunded"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"failed"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit result set to orders assigned a specific status."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit result set to orders assigned a specific customer."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit result set to orders assigned a specific product."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"dp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Number of decimal points to use in each resource."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/wp-json/wc/karcher/clients"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"/wc/karcher/clients/(?P&lt;id&gt;[</span><span class="se">\\</span><span class="s2">d]+)"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wc/karcher"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"GET"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"endpoints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"GET"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unique identifier for the resource."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"view"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"edit"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scope under which the request is made; determines fields present in response."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"/wc/karcher/billing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wc/karcher"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"GET"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"endpoints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"GET"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"view"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"edit"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scope under which the request is made; determines fields present in response."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Current page of the collection."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maximum number of items to be returned in result set."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"search"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit results to those matching a string."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"after"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit response to resources published after a given ISO8601 compliant date."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"before"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit response to resources published before a given ISO8601 compliant date."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"exclude"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ensure result set excludes specific IDs."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"include"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit result set to specific ids."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"offset"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offset the result set by a specific number of items."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"desc"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"asc"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"desc"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Order sort attribute ascending or descending."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"orderby"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"date"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"include"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"slug"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sort collection by object attribute."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit result set to those of particular parent IDs."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"parent_exclude"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit result set to all items except those of a particular parent ID."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"array"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"any"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"any"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"on-hold"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cancelled"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"refunded"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"failed"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit result set to orders assigned a specific status."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit result set to orders assigned a specific customer."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limit result set to orders assigned a specific product."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"dp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Number of decimal points to use in each resource."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/wp-json/wc/karcher/billing"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"/wc/karcher/billing/(?P&lt;id&gt;[</span><span class="se">\\</span><span class="s2">d]+)"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"namespace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wc/karcher"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"GET"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"endpoints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"methods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"GET"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unique identifier for the resource."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"integer"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"view"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"enum"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"view"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"edit"</span><span class="w">
+              </span><span class="p">],</span><span class="w">
+              </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scope under which the request is made; determines fields present in response."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"up"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/wp-json/"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='clients'>Clients</h1>
+<p>The clients API allows you to view a batch of clients.</p>
+<h2 id='client-properties'>Client properties</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Unique identifier for the resource. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>fullname</code></td>
+<td>string</td>
+<td>Fullname. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Type with which the client was created. Options: <code>PN</code> and <code>PJ</code>.</td>
+</tr>
+<tr>
+<td><code>document_type</code></td>
+<td>string</td>
+<td>Document type with which the client was created. Options: <code>C</code> and <code>N</code>.</td>
+</tr>
+<tr>
+<td><code>cc</code></td>
+<td>string</td>
+<td>This field is shown when the client was registered with CC. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>nit</code></td>
+<td>string</td>
+<td>This field is shown when the client was registered with NIT. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>document_number</code></td>
+<td>string</td>
+<td>Document number. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>address_1</code></td>
+<td>string</td>
+<td>Client address. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>address_2</code></td>
+<td>string</td>
+<td>Additional information from the client&#39;s address. It can be empty. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>address_1</code></td>
+<td>string</td>
+<td>Client address. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>string</td>
+<td>Country code in ISO 3166-1 alpha-2 format. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>string</td>
+<td>ISO code or name of the state, province or district. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>state_code</code></td>
+<td>string</td>
+<td>Code of the state - DIAN (only for clients registered as Colombians). It can be empty. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td>string</td>
+<td>City name. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>transport_zone</code></td>
+<td>string</td>
+<td>Transport zone. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>class_tax</code></td>
+<td>string</td>
+<td>Class tax. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>branch_code</code></td>
+<td>string</td>
+<td>Branch code. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>sales_chanel</code></td>
+<td>string</td>
+<td>Sales chanel. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>responsable</code></td>
+<td>string</td>
+<td>Responsable. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>seller</code></td>
+<td>string</td>
+<td>Seller. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>string</td>
+<td>Currency the order was created with, in ISO format. Options: <code>AED</code>, <code>AFN</code>, <code>ALL</code>, <code>AMD</code>, <code>ANG</code>, <code>AOA</code>, <code>ARS</code>, <code>AUD</code>, <code>AWG</code>, <code>AZN</code>, <code>BAM</code>, <code>BBD</code>, <code>BDT</code>, <code>BGN</code>, <code>BHD</code>, <code>BIF</code>, <code>BMD</code>, <code>BND</code>, <code>BOB</code>, <code>BRL</code>, <code>BSD</code>, <code>BTC</code>, <code>BTN</code>, <code>BWP</code>, <code>BYR</code>, <code>BZD</code>, <code>CAD</code>, <code>CDF</code>, <code>CHF</code>, <code>CLP</code>, <code>CNY</code>, <code>COP</code>, <code>CRC</code>, <code>CUC</code>, <code>CUP</code>, <code>CVE</code>, <code>CZK</code>, <code>DJF</code>, <code>DKK</code>, <code>DOP</code>, <code>DZD</code>, <code>EGP</code>, <code>ERN</code>, <code>ETB</code>, <code>EUR</code>, <code>FJD</code>, <code>FKP</code>, <code>GBP</code>, <code>GEL</code>, <code>GGP</code>, <code>GHS</code>, <code>GIP</code>, <code>GMD</code>, <code>GNF</code>, <code>GTQ</code>, <code>GYD</code>, <code>HKD</code>, <code>HNL</code>, <code>HRK</code>, <code>HTG</code>, <code>HUF</code>, <code>IDR</code>, <code>ILS</code>, <code>IMP</code>, <code>INR</code>, <code>IQD</code>, <code>IRR</code>, <code>IRT</code>, <code>ISK</code>, <code>JEP</code>, <code>JMD</code>, <code>JOD</code>, <code>JPY</code>, <code>KES</code>, <code>KGS</code>, <code>KHR</code>, <code>KMF</code>, <code>KPW</code>, <code>KRW</code>, <code>KWD</code>, <code>KYD</code>, <code>KZT</code>, <code>LAK</code>, <code>LBP</code>, <code>LKR</code>, <code>LRD</code>, <code>LSL</code>, <code>LYD</code>, <code>MAD</code>, <code>MDL</code>, <code>MGA</code>, <code>MKD</code>, <code>MMK</code>, <code>MNT</code>, <code>MOP</code>, <code>MRO</code>, <code>MUR</code>, <code>MVR</code>, <code>MWK</code>, <code>MXN</code>, <code>MYR</code>, <code>MZN</code>, <code>NAD</code>, <code>NGN</code>, <code>NIO</code>, <code>NOK</code>, <code>NPR</code>, <code>NZD</code>, <code>OMR</code>, <code>PAB</code>, <code>PEN</code>, <code>PGK</code>, <code>PHP</code>, <code>PKR</code>, <code>PLN</code>, <code>PRB</code>, <code>PYG</code>, <code>QAR</code>, <code>RON</code>, <code>RSD</code>, <code>RUB</code>, <code>RWF</code>, <code>SAR</code>, <code>SBD</code>, <code>SCR</code>, <code>SDG</code>, <code>SEK</code>, <code>SGD</code>, <code>SHP</code>, <code>SLL</code>, <code>SOS</code>, <code>SRD</code>, <code>SSP</code>, <code>STD</code>, <code>SYP</code>, <code>SZL</code>, <code>THB</code>, <code>TJS</code>, <code>TMT</code>, <code>TND</code>, <code>TOP</code>, <code>TRY</code>, <code>TTD</code>, <code>TWD</code>, <code>TZS</code>, <code>UAH</code>, <code>UGX</code>, <code>USD</code>, <code>UYU</code>, <code>UZS</code>, <code>VEF</code>, <code>VND</code>, <code>VUV</code>, <code>WST</code>, <code>XAF</code>, <code>XCD</code>, <code>XOF</code>, <code>XPF</code>, <code>YER</code>, <code>ZAR</code> and <code>ZMW</code>. Default is <code>USD</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='retrieve-an-client'>Retrieve an client</h2>
+<p>This API lets you retrieve and view a specific client.</p>
+<h3 id='http-request'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/wp-json/wc/karcher/clients/&lt;id&gt;</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl https://example.com/wp-json/wc/karcher/clients/715 <span class="se">\</span>
+    -u consumer_key:consumer_secret
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">WooCommerce</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"clients/715"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span> <span class="nb">print_r</span><span class="p">(</span><span class="nv">$woocommerce</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'clients/715'</span><span class="p">));</span> <span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="k">print</span><span class="p">(</span><span class="n">wcapi</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"clients/715"</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="n">woocommerce</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"clients/715"</span><span class="p">).</span><span class="nf">parsed_response</span>
+</code></pre>
+<blockquote>
+<p>JSON response example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">715</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Omar Fandiño"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PN"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92001006"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"document_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92001006"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Calle 2 # 99 - 120"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CO"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VAC"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"state_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cali"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transport_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000001"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"class_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PN"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"900000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sales_chanel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"953000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"responsable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7083000072"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"seller"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7083000072"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COP"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h4 id='available-parameters'>Available parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>dp</code></td>
+<td>string</td>
+<td>Number of decimal points to use in each resource.</td>
+</tr>
+</tbody></table>
+<h2 id='list-all-clients'>List all clients</h2>
+<p>This API helps you to view all the clients.</p>
+<h3 id='http-request-2'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/wp-json/wc/karcher/clients</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl https://example.com/wp-json/wc/karcher/clients <span class="se">\</span>
+    -u consumer_key:consumer_secret
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">WooCommerce</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"clients"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span> <span class="nb">print_r</span><span class="p">(</span><span class="nv">$woocommerce</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'clients'</span><span class="p">));</span> <span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="k">print</span><span class="p">(</span><span class="n">wcapi</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"clients"</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="n">woocommerce</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"clients"</span><span class="p">).</span><span class="nf">parsed_response</span>
+</code></pre>
+<blockquote>
+<p>JSON response example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">727</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1144154123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"document_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1144154123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Calle 5 # 10 - 20"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CO"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CUN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bogotá D.C"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transport_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"class_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"900000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sales_chanel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"953000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"responsable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7083000072"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seller"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7083000072"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COP"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">715</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Omar Fandiño"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"document_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92001006"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"document_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92001006"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Calle 2 # 99 - 120"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CO"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VAC"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cali"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transport_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"class_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"900000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sales_chanel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"953000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"responsable"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7083000072"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"seller"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7083000072"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COP"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h4 id='available-parameters-2'>Available parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>seen</code></td>
+<td>boolean</td>
+<td>Show again the items that have already been seen by Karcher. Default is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>integer</td>
+<td>Current page of the collection. Default is <code>1</code>.</td>
+</tr>
+<tr>
+<td><code>per_page</code></td>
+<td>integer</td>
+<td>Maximum number of items to be returned in result set. Default is <code>10</code>.</td>
+</tr>
+<tr>
+<td><code>search</code></td>
+<td>string</td>
+<td>Limit results to those matching a string.</td>
+</tr>
+<tr>
+<td><code>after</code></td>
+<td>string</td>
+<td>Limit response to resources published after a given ISO8601 compliant date.</td>
+</tr>
+<tr>
+<td><code>before</code></td>
+<td>string</td>
+<td>Limit response to resources published before a given ISO8601 compliant date.</td>
+</tr>
+<tr>
+<td><code>exclude</code></td>
+<td>array</td>
+<td>Ensure result set excludes specific IDs.</td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td>array</td>
+<td>Limit result set to specific ids.</td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td>integer</td>
+<td>Offset the result set by a specific number of items.</td>
+</tr>
+<tr>
+<td><code>orderby</code></td>
+<td>string</td>
+<td>Sort collection by object attribute. Options: <code>date</code>, <code>id</code>, <code>include</code>, <code>title</code> and <code>slug</code>. Default is <code>date</code>.</td>
+</tr>
+<tr>
+<td><code>dp</code></td>
+<td>integer</td>
+<td>Number of decimal points to use in each resource. Default is <code>2</code>.</td>
+</tr>
+</tbody></table>
+<h1 id='billing'>Billing</h1>
+<p>The billing API allows you to view a batch of invoices.</p>
+<h2 id='billing-properties'>Billing properties</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Unique identifier for the resource. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td>string</td>
+<td>Order code generated for Karcher. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>shipping_total</code></td>
+<td>string</td>
+<td>Total shipping amount for the  order. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>shipping_tax</code></td>
+<td>string</td>
+<td>Total shipping tax amount for the order. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>cart_tax</code></td>
+<td>string</td>
+<td>Sum of line item taxes only. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td>string</td>
+<td>Grand total. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>total_tax</code></td>
+<td>string</td>
+<td>Sum of all taxes. <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>line_items</code></td>
+<td>array</td>
+<td>List of order line items. See <a href="#line-items-properties">Line Items Properties</a></td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>string</td>
+<td>Currency the order was created with, in ISO format. Options: <code>AED</code>, <code>AFN</code>, <code>ALL</code>, <code>AMD</code>, <code>ANG</code>, <code>AOA</code>, <code>ARS</code>, <code>AUD</code>, <code>AWG</code>, <code>AZN</code>, <code>BAM</code>, <code>BBD</code>, <code>BDT</code>, <code>BGN</code>, <code>BHD</code>, <code>BIF</code>, <code>BMD</code>, <code>BND</code>, <code>BOB</code>, <code>BRL</code>, <code>BSD</code>, <code>BTC</code>, <code>BTN</code>, <code>BWP</code>, <code>BYR</code>, <code>BZD</code>, <code>CAD</code>, <code>CDF</code>, <code>CHF</code>, <code>CLP</code>, <code>CNY</code>, <code>COP</code>, <code>CRC</code>, <code>CUC</code>, <code>CUP</code>, <code>CVE</code>, <code>CZK</code>, <code>DJF</code>, <code>DKK</code>, <code>DOP</code>, <code>DZD</code>, <code>EGP</code>, <code>ERN</code>, <code>ETB</code>, <code>EUR</code>, <code>FJD</code>, <code>FKP</code>, <code>GBP</code>, <code>GEL</code>, <code>GGP</code>, <code>GHS</code>, <code>GIP</code>, <code>GMD</code>, <code>GNF</code>, <code>GTQ</code>, <code>GYD</code>, <code>HKD</code>, <code>HNL</code>, <code>HRK</code>, <code>HTG</code>, <code>HUF</code>, <code>IDR</code>, <code>ILS</code>, <code>IMP</code>, <code>INR</code>, <code>IQD</code>, <code>IRR</code>, <code>IRT</code>, <code>ISK</code>, <code>JEP</code>, <code>JMD</code>, <code>JOD</code>, <code>JPY</code>, <code>KES</code>, <code>KGS</code>, <code>KHR</code>, <code>KMF</code>, <code>KPW</code>, <code>KRW</code>, <code>KWD</code>, <code>KYD</code>, <code>KZT</code>, <code>LAK</code>, <code>LBP</code>, <code>LKR</code>, <code>LRD</code>, <code>LSL</code>, <code>LYD</code>, <code>MAD</code>, <code>MDL</code>, <code>MGA</code>, <code>MKD</code>, <code>MMK</code>, <code>MNT</code>, <code>MOP</code>, <code>MRO</code>, <code>MUR</code>, <code>MVR</code>, <code>MWK</code>, <code>MXN</code>, <code>MYR</code>, <code>MZN</code>, <code>NAD</code>, <code>NGN</code>, <code>NIO</code>, <code>NOK</code>, <code>NPR</code>, <code>NZD</code>, <code>OMR</code>, <code>PAB</code>, <code>PEN</code>, <code>PGK</code>, <code>PHP</code>, <code>PKR</code>, <code>PLN</code>, <code>PRB</code>, <code>PYG</code>, <code>QAR</code>, <code>RON</code>, <code>RSD</code>, <code>RUB</code>, <code>RWF</code>, <code>SAR</code>, <code>SBD</code>, <code>SCR</code>, <code>SDG</code>, <code>SEK</code>, <code>SGD</code>, <code>SHP</code>, <code>SLL</code>, <code>SOS</code>, <code>SRD</code>, <code>SSP</code>, <code>STD</code>, <code>SYP</code>, <code>SZL</code>, <code>THB</code>, <code>TJS</code>, <code>TMT</code>, <code>TND</code>, <code>TOP</code>, <code>TRY</code>, <code>TTD</code>, <code>TWD</code>, <code>TZS</code>, <code>UAH</code>, <code>UGX</code>, <code>USD</code>, <code>UYU</code>, <code>UZS</code>, <code>VEF</code>, <code>VND</code>, <code>VUV</code>, <code>WST</code>, <code>XAF</code>, <code>XCD</code>, <code>XOF</code>, <code>XPF</code>, <code>YER</code>, <code>ZAR</code> and <code>ZMW</code>. Default is <code>USD</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='line-items-properties'>Line Items Properties</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>sku</code></td>
+<td>string</td>
+<td>Product SKU <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>quantity</code></td>
+<td>integer</td>
+<td>Quantity <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>subtotal</code></td>
+<td>string</td>
+<td>Line item subtotal <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>subtotal_tax</code></td>
+<td>string</td>
+<td>Line item tax subtotal <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td>string</td>
+<td>Line item total <i class="label label-info">read-only</i></td>
+</tr>
+<tr>
+<td><code>total_tax</code></td>
+<td>string</td>
+<td>Line item tax total <i class="label label-info">read-only</i></td>
+</tr>
+</tbody></table>
+<h2 id='retrieve-an-billing'>Retrieve an billing</h2>
+<p>This API lets you retrieve and view a specific invoice.</p>
+<h3 id='http-request'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/wp-json/wc/karcher/billing/&lt;id&gt;</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl https://example.com/wp-json/wc/karcher/billing/4969 <span class="se">\</span>
+    -u consumer_key:consumer_secret
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">WooCommerce</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"billing/4969"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span> <span class="nb">print_r</span><span class="p">(</span><span class="nv">$woocommerce</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'billing/4969'</span><span class="p">));</span> <span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="k">print</span><span class="p">(</span><span class="n">wcapi</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"billing/4969"</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="n">woocommerce</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"billing/4969"</span><span class="p">).</span><span class="nf">parsed_response</span>
+</code></pre>
+<blockquote>
+<p>JSON response example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4969</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KAR/26432764/OC-4969"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shipping_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6040"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shipping_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cart_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"195840"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.810-007.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"129900"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subtotal_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"129900"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.295-771.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59900"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"subtotal_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59900"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COP"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h4 id='available-parameters'>Available parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>dp</code></td>
+<td>string</td>
+<td>Number of decimal points to use in each resource.</td>
+</tr>
+</tbody></table>
+<h2 id='list-all-billing'>List all billing</h2>
+<p>This API helps you to view all the invoices.</p>
+<h3 id='http-request-2'>HTTP request</h3>
+<div class="api-endpoint">
+    <div class="endpoint-data">
+        <i class="label label-get">GET</i>
+        <h6>/wp-json/wc/karcher/billing</h6>
+    </div>
+</div>
+<pre class="highlight shell tab-shell"><code>curl https://example.com/wp-json/wc/karcher/billing <span class="se">\</span>
+    -u consumer_key:consumer_secret
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">WooCommerce</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"billing"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span> <span class="nb">print_r</span><span class="p">(</span><span class="nv">$woocommerce</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'billing'</span><span class="p">));</span> <span class="cp">?&gt;</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="k">print</span><span class="p">(</span><span class="n">wcapi</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"billing"</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="n">woocommerce</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"billing"</span><span class="p">).</span><span class="nf">parsed_response</span>
+</code></pre>
+<blockquote>
+<p>JSON response example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4969</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KAR/26432764/OC-4969"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shipping_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6040"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shipping_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cart_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"195840"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.810-007.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"129900"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subtotal_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"129900"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6.295-771.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59900"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subtotal_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59900"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COP"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4968</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KAR/26469764/OC-4968"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shipping_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shipping_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cart_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"279900"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.633-038.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"279900"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subtotal_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"279900"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COP"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h4 id='available-parameters-2'>Available parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>seen</code></td>
+<td>boolean</td>
+<td>Show again the items that have already been seen by Karcher. Default is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>integer</td>
+<td>Current page of the collection. Default is <code>1</code>.</td>
+</tr>
+<tr>
+<td><code>per_page</code></td>
+<td>integer</td>
+<td>Maximum number of items to be returned in result set. Default is <code>10</code>.</td>
+</tr>
+<tr>
+<td><code>search</code></td>
+<td>string</td>
+<td>Limit results to those matching a string.</td>
+</tr>
+<tr>
+<td><code>after</code></td>
+<td>string</td>
+<td>Limit response to resources published after a given ISO8601 compliant date.</td>
+</tr>
+<tr>
+<td><code>before</code></td>
+<td>string</td>
+<td>Limit response to resources published before a given ISO8601 compliant date.</td>
+</tr>
+<tr>
+<td><code>exclude</code></td>
+<td>array</td>
+<td>Ensure result set excludes specific IDs.</td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td>array</td>
+<td>Limit result set to specific ids.</td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td>integer</td>
+<td>Offset the result set by a specific number of items.</td>
+</tr>
+<tr>
+<td><code>orderby</code></td>
+<td>string</td>
+<td>Sort collection by object attribute. Options: <code>date</code>, <code>id</code>, <code>include</code>, <code>title</code> and <code>slug</code>. Default is <code>date</code>.</td>
+</tr>
+<tr>
+<td><code>dp</code></td>
+<td>integer</td>
+<td>Number of decimal points to use in each resource. Default is <code>2</code>.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">cURL</a>
+                <a href="#" data-language-name="javascript">Node.js</a>
+                <a href="#" data-language-name="php">PHP</a>
+                <a href="#" data-language-name="python">Python</a>
+                <a href="#" data-language-name="ruby">Ruby</a>
+          </div>
+      </div>
+	</div>
+
+
+  </body>
+</html>
