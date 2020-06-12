@@ -1,5 +1,5 @@
 ---
-title: WooCommerce REST API Documentation - WP REST API v3
+title: Karcher REST API Documentation
 
 language_tabs:
   - shell: cURL
