@@ -10,6 +10,7 @@ The clients API allows you to view a batch of clients.
 | `fullname`            | string    | Fullname. <i class="label label-info">read-only</i>                                                                                                         |
 | `type`                | string    | Type with which the client was created. Options: `PN` and `PJ`.                                                                                                      |
 | `document_type`       | string    | Document type with which the client was created. Options: `C` and `N`.                                                                                                       |
+| `company`             | string    | Company.  <i class="label label-info">read-only</i>                                                                                                         |
 | `cc`                  | string    | This field is shown when the client was registered with CC. <i class="label label-info">read-only</i>                                                                                                         |
 | `nit`                 | string    | This field is shown when the client was registered with NIT. <i class="label label-info">read-only</i>                                                                                                         |
 | `document_number`     | string    | Document number. <i class="label label-info">read-only</i>                                                                                                         |
@@ -20,6 +21,9 @@ The clients API allows you to view a batch of clients.
 | `state`               | string    | ISO code or name of the state, province or district. <i class="label label-info">read-only</i>                                                                                  |
 | `state_code`          | string    | Code of the state - DIAN (only for clients registered as Colombians). It can be empty. <i class="label label-info">read-only</i>                                                                                                         |
 | `city`                | string | City name. <i class="label label-info">read-only</i>                                                                                                         |
+| `postcode`            | string | Post code. <i class="label label-info">read-only</i>                                                                                                         |
+| `phone`               | string | Phone number. <i class="label label-info">read-only</i>                                                                                                         |
+| `email`               | string | E-mail. <i class="label label-info">read-only</i>                                                                                                         |
 | `transport_zone`      | string | Transport zone. <i class="label label-info">read-only</i>                                                                                                         |
 | `class_tax`           | string | Class tax. <i class="label label-info">read-only</i>                                                                                                         |
 | `branch_code`         | string | Branch code. <i class="label label-info">read-only</i>                                                                                                         |
@@ -77,6 +81,7 @@ woocommerce.get("clients/715").parsed_response
   "fullname": "Omar Fandiño",
   "type": "PN",
   "document_type": "C",
+  "company": "Incdustry",
   "cc": "92001006",
   "document_number": "92001006",
   "address_1": "Calle 2 # 99 - 120",
@@ -85,6 +90,9 @@ woocommerce.get("clients/715").parsed_response
   "state": "VAC",
   "state_code": "76",
   "city": "Cali",
+  "postcode": "760022",
+  "phone": "3145623154",
+  "email": "omar.fandino@incdustry.com",
   "transport_zone": "0000000001",
   "class_tax": "PN",
   "branch_code": "900000",
@@ -151,6 +159,7 @@ woocommerce.get("clients").parsed_response
     "fullname": "John Doe",
     "type": "PN",
     "document_type": "C",
+    "company": "My company",
     "cc": "1144154123",
     "document_number": "1144154123",
     "address_1": "Calle 5 # 10 - 20",
@@ -159,6 +168,9 @@ woocommerce.get("clients").parsed_response
     "state": "CUN",
     "state_code": "11",
     "city": "Bogotá D.C",
+    "postcode": "110111",
+    "phone": "311775995",
+    "email": "john.doe@gmail.com",
     "transport_zone": "0000000001",
     "class_tax": "PN",
     "branch_code": "900000",
@@ -172,6 +184,7 @@ woocommerce.get("clients").parsed_response
     "fullname": "Omar Fandiño",
     "type": "PN",
     "document_type": "C",
+    "company": "Incdustry",
     "cc": "92001006",
     "document_number": "92001006",
     "address_1": "Calle 2 # 99 - 120",
@@ -180,6 +193,9 @@ woocommerce.get("clients").parsed_response
     "state": "VAC",
     "state_code": "76",
     "city": "Cali",
+    "postcode": "760022",
+    "phone": "3145623154",
+    "email": "omar.fandino@incdustry.com",
     "transport_zone": "0000000001",
     "class_tax": "PN",
     "branch_code": "900000",
