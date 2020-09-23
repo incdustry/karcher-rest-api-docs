@@ -7,11 +7,13 @@ The clients API allows you to view a batch of clients.
 | Attribute              | Type      | Description |
 |------------------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `id`                  | integer   | Unique identifier for the resource. <i class="label label-info">read-only</i>                                                                                                         |
+| `status`               | string    | Order status. Options: `pending`, `processing`, `on-hold`, `completed`, `cancelled`, `refunded`, `failed` and `trash`. Default is `pending`.                                                     |
 | `fullname`            | string    | Fullname. <i class="label label-info">read-only</i>                                                                                                         |
 | `type`                | string    | Type with which the client was created. Options: `PN` and `PJ`.                                                                                                      |
 | `document_type`       | string    | Document type with which the client was created. Options: `C` and `N`.                                                                                                       |
 | `company`             | string    | Company.  <i class="label label-info">read-only</i>                                                                                                         |
 | `cc`                  | string    | This field is shown when the client was registered with CC. <i class="label label-info">read-only</i>                                                                                                         |
+| `ce`                  | string    | This field is shown when the client was registered with CE. <i class="label label-info">read-only</i>                                                                                                         |
 | `nit`                 | string    | This field is shown when the client was registered with NIT. <i class="label label-info">read-only</i>                                                                                                         |
 | `document_number`     | string    | Document number. <i class="label label-info">read-only</i>                                                                                                         |
 | `address_1`           | string    | Client address. <i class="label label-info">read-only</i>                                                                                                         |
@@ -78,6 +80,7 @@ woocommerce.get("clients/715").parsed_response
 ```json
 {
   "id": 715,
+  "status": "processing",
   "fullname": "Omar Fandiño",
   "type": "PN",
   "document_type": "C",
@@ -156,6 +159,7 @@ woocommerce.get("clients").parsed_response
 [
   {
     "id": 727,
+    "status": "processing",
     "fullname": "John Doe",
     "type": "PN",
     "document_type": "C",
@@ -181,6 +185,7 @@ woocommerce.get("clients").parsed_response
   },
   {
     "id": 715,
+    "status": "processing",
     "fullname": "Omar Fandiño",
     "type": "PN",
     "document_type": "C",
